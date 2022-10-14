@@ -1635,7 +1635,7 @@ pre code {
 
 <h1 class="title toc-ignore">Lab 01: Getting Started with RStudio</h1>
 <h4 class="author">Authors: Bruno Grande and Ryan Morin</h4>
-<h4 class="date">Last updated: 2022-09-16</h4>
+<h4 class="date">Last updated: 2022-10-14</h4>
 
 </div>
 
@@ -1720,7 +1720,7 @@ directory similar to the examples above.</p>
 <pre class="r"><code>getwd</code></pre>
 <pre><code>## function () 
 ## .Internal(getwd())
-## &lt;bytecode: 0x55927f9742a0&gt;
+## &lt;bytecode: 0x5631174ec310&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 <pre class="bash"><code>pwd</code></pre>
 <pre><code>## /local-scratch/localhome/edeyasso/lab-1-Ebenezer243</code></pre>
@@ -1834,6 +1834,16 @@ head -n 25 /local-scratch/course_files/MBB243/Sneddon_genotypes.txt &gt; ~/MBB24
 ## rs7537756    1   854250  AA
 ## rs13302982   1   861808  GG
 ## rs376747791  1   863130  AA</code></pre>
+<p>head -n 25 /local-scratch/course_files/MBB243/Sneddon_genotypes.txt
+&gt;&gt; ~/MBB243/genotype_head.txt head
+/local-scratch/course_files/MBB243/Sneddon_genotypes.txt &gt;
+~/MBB243/out/genotype_head.txt head
+/local-scratch/course_files/MBB243/Sneddon_genotypes.txt &gt;
+~/MBB243/genotype_head.txt head -n 25
+/local-scratch/course_files/MBB243/Sneddon_genotypes.txt &gt;
+~/MBB243/genotype_head.txt</p>
+<p>head -n 25 /local-scratch/course_files/MBB243/Sneddon_genotypes.txt
+&gt; ~/MBB243/genotype_head.txt</p>
 <p>You should have a few lines of genotype information in a new file
 named <code>~/MBB243/genotype_head.txt</code>. Do you notice any
 genotypes in there that look “off”? Assuming we wanted to sanity check
@@ -1844,12 +1854,21 @@ below does this but uses our smaller file as input for efficiency. The
 result should be all unique genotypes in that file. What did we do
 wrong?</p>
 <pre class="bash"><code>cut -f 4 ~/MBB243/genotype_head.txt | sort | uniq
+cut -f 4 ~/MBB243/genotype_head.txt | sort | uniq
 # to help debug this, deconstruct it into smaller pieces.
 # then try running each set of commands before the pipe, e.g. uncomment the line below and re-run this chunk. What is the output?  
 #This is probably easier to do at the terminal instead of in the Rmarkdown
 # cut -f 4 ~/MBB243/genotype_head.txt | sort 
 # cut -f 4 ~/MBB243/genotype_head.txt </code></pre>
 <pre><code>## --
+## AA
+## AC
+## AG
+## CC
+## GG
+## GT
+## TT
+## --
 ## AA
 ## AC
 ## AG
@@ -1910,10 +1929,10 @@ ls -l ~/files/</code></pre>
 ## -rw-r--r--. 1 rdmorin  domain users      56053 Sep 28  2020 covid19_cases_worldwide_monthly.csv
 ## -rw-r--r--. 1 rdmorin  domain users      75219 Mar 11  2022 covid19_cases_worldwide_monthly.updated.csv
 ## -rw-r--r--. 1 rdmorin  domain users        101 Jan  6  2022 cutsite_ref.fa
-## -rw-r--r--. 1 rdmorin  domain users  130014152 Mar 18 05:44 ensembl_genes_hg38.tsv
+## -rw-r--r--. 1 rdmorin  domain users  130014152 Mar 18  2022 ensembl_genes_hg38.tsv
 ## -rw-r--r--. 1 rdmorin  domain users          0 Jan 14  2022 ENST00000003084
 ## lrwxrwxrwx. 1 rdmorin  domain users          5 Mar 11  2022 files -&gt; files
-## -rw-r--r--. 1 rdmorin  domain users    1249196 Apr  1 03:00 gambl_capture_mutmat_coo.tsv
+## -rw-r--r--. 1 rdmorin  domain users    1249196 Apr  1  2022 gambl_capture_mutmat_coo.tsv
 ## -rw-r--r--. 1 rdmorin  domain users     711215 Jan  9  2022 gene_id.sorted.txt
 ## -rw-r--r--. 1 rdmorin  domain users    2194547 Jan  8  2022 gene_id.txt
 ## -rw-r--r--. 1 rdmorin  domain users   24780911 Mar  8  2022 genome_Ashley_Bodily.txt
@@ -1930,7 +1949,7 @@ ls -l ~/files/</code></pre>
 ## -rw-r--r--. 1 rdmorin  domain users   20821185 Jan 14  2022 human_genes_chr7.fa
 ## -rw-r--r--. 1 rdmorin  domain users    7472874 Jan 14  2022 human_genes_chr7.tar.gz
 ## lrwxrwxrwx. 1 rdmorin  domain users         35 Jan  8  2022 MBB243 -&gt; /local-scratch/course_files/MBB243/
-## drwxr-xr-x. 2 rdmorin  domain users         10 Apr  8 09:24 md
+## drwxr-xr-x. 2 rdmorin  domain users         10 Apr  8  2022 md
 ## -rwxr-xr-x. 1 rdmorin  domain users   66709754 Jan  6  2022 miniconda_installer.sh
 ## -rw-------. 1 rdmorin  domain users   24808135 Jan  5  2022 Morin_genotypes.txt
 ## -rw-r--r--. 1 rdmorin  domain users    8682096 Jan 14  2022 mouse_cds_chr7.fa.txt
@@ -1961,10 +1980,10 @@ ls -l ~/files/</code></pre>
 ## -rw-r--r--. 1 rdmorin  domain users      56053 Sep 28  2020 covid19_cases_worldwide_monthly.csv
 ## -rw-r--r--. 1 rdmorin  domain users      75219 Mar 11  2022 covid19_cases_worldwide_monthly.updated.csv
 ## -rw-r--r--. 1 rdmorin  domain users        101 Jan  6  2022 cutsite_ref.fa
-## -rw-r--r--. 1 rdmorin  domain users  130014152 Mar 18 05:44 ensembl_genes_hg38.tsv
+## -rw-r--r--. 1 rdmorin  domain users  130014152 Mar 18  2022 ensembl_genes_hg38.tsv
 ## -rw-r--r--. 1 rdmorin  domain users          0 Jan 14  2022 ENST00000003084
 ## lrwxrwxrwx. 1 rdmorin  domain users          5 Mar 11  2022 files -&gt; files
-## -rw-r--r--. 1 rdmorin  domain users    1249196 Apr  1 03:00 gambl_capture_mutmat_coo.tsv
+## -rw-r--r--. 1 rdmorin  domain users    1249196 Apr  1  2022 gambl_capture_mutmat_coo.tsv
 ## -rw-r--r--. 1 rdmorin  domain users     711215 Jan  9  2022 gene_id.sorted.txt
 ## -rw-r--r--. 1 rdmorin  domain users    2194547 Jan  8  2022 gene_id.txt
 ## -rw-r--r--. 1 rdmorin  domain users   24780911 Mar  8  2022 genome_Ashley_Bodily.txt
@@ -1981,7 +2000,7 @@ ls -l ~/files/</code></pre>
 ## -rw-r--r--. 1 rdmorin  domain users   20821185 Jan 14  2022 human_genes_chr7.fa
 ## -rw-r--r--. 1 rdmorin  domain users    7472874 Jan 14  2022 human_genes_chr7.tar.gz
 ## lrwxrwxrwx. 1 rdmorin  domain users         35 Jan  8  2022 MBB243 -&gt; /local-scratch/course_files/MBB243/
-## drwxr-xr-x. 2 rdmorin  domain users         10 Apr  8 09:24 md
+## drwxr-xr-x. 2 rdmorin  domain users         10 Apr  8  2022 md
 ## -rwxr-xr-x. 1 rdmorin  domain users   66709754 Jan  6  2022 miniconda_installer.sh
 ## -rw-------. 1 rdmorin  domain users   24808135 Jan  5  2022 Morin_genotypes.txt
 ## -rw-r--r--. 1 rdmorin  domain users    8682096 Jan 14  2022 mouse_cds_chr7.fa.txt
@@ -2155,7 +2174,7 @@ code below to print the contents of other environment variables such as
 HOME, HOSTNAME, and USER.</p>
 <pre class="bash"><code>echo $PATH
 </code></pre>
-<pre><code>## /localhome/edeyasso/.local/bin:/localhome/edeyasso/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback:/usr/lib/rstudio-server/bin/postback:/usr/lib/rstudio-server/bin/postback</code></pre>
+<pre><code>## /localhome/edeyasso/miniconda3/bin:/localhome/edeyasso/miniconda3/condabin:/localhome/edeyasso/.local/bin:/localhome/edeyasso/bin:/localhome/edeyasso/miniconda3/bin:/local-scratch/localhome/edeyasso/miniconda3/bin:/localhome/edeyasso/miniconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/rstudio-server/bin/quarto/bin:/usr/lib/rstudio-server/bin/postback</code></pre>
 <p><strong>Task</strong></p>
 <p>In the Terminal you need to run the script miniconda_installer.sh.
 This will launch an interactive process so you will have to run it
@@ -2188,6 +2207,9 @@ properly</strong></p>
 <pre class="r"><code>#install.packages(&quot;reticulate&quot;)
 library(reticulate)
 use_python(&quot;/usr/bin/python3&quot;)</code></pre>
+<pre><code>## Warning: The request to `use_python(&quot;/usr/bin/python3&quot;)` will be ignored because
+## the environment variable RETICULATE_PYTHON is set to &quot;/localhome/edeyasso/
+## miniconda3/bin/python&quot;</code></pre>
 <p>When we want to use Python instead of R we simply need to change the
 first part of the code block to specify the language. Although you can’t
 easily tell from the example below, the code is being interpreted as
@@ -2221,16 +2243,21 @@ tasks.</p>
 <p><strong>Task</strong> Set eval=TRUE in the two chunks below and run
 them (in order!).</p>
 <pre class="r"><code>library(reticulate)
-use_python(&quot;~/miniconda3/bin/python&quot;)
-use_condaenv(&quot;base&quot;)</code></pre>
+use_python(&quot;~/miniconda3/bin/python&quot;)</code></pre>
+<pre><code>## Warning: Previous request to `use_python(&quot;/usr/bin/python3&quot;, required = TRUE)`
+## will be ignored. It is superseded by request to `use_python(&quot;/localhome/
+## edeyasso/miniconda3/bin/python&quot;)</code></pre>
+<pre class="r"><code>use_condaenv(&quot;base&quot;)</code></pre>
 <p>The next code block simply prints the path to the python executable
 that is used and then loads and tests some functionality provided by the
 BioPython library.</p>
-<pre class="python"><code>sys.executable
+<pre class="python"><code>
+
 from Bio.Seq import Seq
 my_seq = Seq(&quot;AGTACACTGGT&quot;)
 complemented_seq = my_seq.complement()
 str(complemented_seq)</code></pre>
+<pre><code>## &#39;TCATGTGACCA&#39;</code></pre>
 </div>
 <div id="installing-more-utilities" class="section level2">
 <h2>Installing more utilities</h2>
@@ -2279,11 +2306,11 @@ to the left of each task to indicate you’ve completed it</p>
 <td>My .bashrc file exists</td>
 </tr>
 <tr class="odd">
-<td>TODO</td>
+<td>DONE</td>
 <td>Miniconda is installed</td>
 </tr>
 <tr class="even">
-<td>TODO</td>
+<td>DONE</td>
 <td>I was able to install both Bioconda and samtools using conda</td>
 </tr>
 <tr class="odd">
